@@ -22,7 +22,7 @@
           >
           </a-table>
         </a-tab-pane>
-        <a-tab-pane key="ram" :tab="$t('ramranking')" force-render>
+        <!-- <a-tab-pane key="ram" :tab="$t('ramranking')" force-render>
           <a-table
             size="small"
             :loading="isLoading"
@@ -31,7 +31,7 @@
             :pagination="false"
           >
           </a-table>
-        </a-tab-pane>
+        </a-tab-pane> -->
       </a-tabs>
     </div>
   </div>
@@ -113,11 +113,11 @@ export default {
         });
     },
     handleChangeTab(e) {
-      if (e === "rams") {
-        this.getRamsList();
-      } else if (e === "ram") {
-        this.getRam100List();
-      }
+      // if (e === "rams") {
+      //   this.getRamsList();
+      // } else if (e === "ram") {
+      //   this.getRam100List();
+      // }
       console.log("handleChangeTab", e);
     },
     getRamsList(next_key = null) {
