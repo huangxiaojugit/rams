@@ -20,6 +20,13 @@
             :data-source="dataList"
             :pagination="pagination"
           >
+            <span slot="username" slot-scope="text">
+              <a
+                :href="`https://eosflare.io/account/${text}`"
+                target="”_blank”"
+                >{{ text }}</a
+              >
+            </span>
           </a-table>
         </a-tab-pane>
         <!-- <a-tab-pane key="ram" :tab="$t('ramranking')" force-render>
@@ -47,7 +54,12 @@ const columns = [
     key: "index",
     dataIndex: "index",
   },
-  { title: "Account", dataIndex: "username", key: "username" },
+  {
+    title: "Account",
+    dataIndex: "username",
+    key: "username",
+    scopedSlots: { customRender: "username" },
+  },
   { title: "RAMS", dataIndex: "mintcount", key: "mintcount" },
 ];
 
@@ -92,6 +104,7 @@ export default {
     this.getRamsList();
   },
   methods: {
+    handleAccountDetail() {},
     /**
      * 获取铭文进度
      */
