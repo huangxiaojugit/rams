@@ -9,6 +9,12 @@
           ((allMintNum * 100) / totalSupply).toFixed(4)
         }}%）
       </div>
+      <div>
+        Telegram:
+        <a href="https://t.me/rams_in_ram" target="”_blank”"
+          >t.me/rams_in_ram</a
+        >
+      </div>
     </div>
     <div class="content">
       <a-tabs default-active-key="1" @change="handleChangeTab">
@@ -251,7 +257,7 @@ export default {
   display: flex;
   align-items: center;
   margin: 20px auto 20px auto;
-  height: 64px;
+  min-height: 64px;
   padding: 0 20px;
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 0.5px,
