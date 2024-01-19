@@ -9,5 +9,6 @@ const en = {
     zh: "中文",
     en: "English",
   },
+  searchUserName: "Search account",
 };
 export default en;

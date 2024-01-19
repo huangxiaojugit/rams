@@ -8,5 +8,6 @@ const zh = {
     zh: "中文",
     en: "English",
   },
+  searchUserName: "查询账户",
 };
 export default zh;

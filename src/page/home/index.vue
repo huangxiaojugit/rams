@@ -23,7 +23,7 @@
             size="small"
             :loading="isLoading"
             :columns="columns"
-            :data-source="dataList"
+            :data-source="showTableList"
             :pagination="pagination"
           >
             <span slot="username" slot-scope="text">
@@ -35,6 +35,14 @@
             </span>
           </a-table>
         </a-tab-pane>
+        <div slot="tabBarExtraContent" class="tabBarExtraContent">
+          <a-input
+            size="small"
+            v-model="search.userName"
+            :placeholder="$t('searchUserName')"
+          >
+          </a-input>
+        </div>
         <!-- <a-tab-pane key="ram" :tab="$t('ramranking')" force-render>
           <a-table
             size="small"
@@ -103,11 +111,27 @@ export default {
       ramColumns: ramColumns,
       allMintNum: 0,
       totalSupply: 100000000,
+      search: {
+        userName: undefined,
+      },
     };
   },
   mounted() {
     this.getMintNum();
     this.getRamsList();
+  },
+  computed: {
+    showTableList() {
+      return this.dataList.filter((v) => {
+        if (!this.search.userName) {
+          return true;
+        }
+        if (this.search.userName && v.username.includes(this.search.userName)) {
+          return true;
+        }
+        return false;
+      });
+    },
   },
   methods: {
     handleAccountDetail() {},
@@ -262,6 +286,10 @@ export default {
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 0.5px,
     rgba(0, 0, 0, 0.024) 0px 0px 5px, rgba(0, 0, 0, 0.05) 0px 1px 2px;
+}
+
+.tabBarExtraContent {
+  margin-right: 10px;
 }
 
 ::v-deep .ant-tabs-bar {
