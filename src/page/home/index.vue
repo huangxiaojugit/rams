@@ -280,7 +280,7 @@ export default {
   width: 80%;
   display: flex;
   align-items: center;
-  margin: 20px auto 20px auto;
+  margin: 20px auto;
   min-height: 64px;
   padding: 0 20px;
   border-radius: 5px;
@@ -299,6 +299,11 @@ export default {
   border: none;
 }
 
+::v-deep .ant-table-content {
+  overflow-y: scroll;
+  max-height: calc(100vh - 190px);
+}
+
 @media screen and (max-width: 640px) {
   /* .header {
     height: 60px;
@@ -310,6 +315,7 @@ export default {
     font-size: 12px;
     flex-direction: column;
     width: 98%;
+    margin: 10px auto;
   }
 }
 </style>
