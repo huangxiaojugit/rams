@@ -301,9 +301,8 @@ export default {
 
 ::v-deep .ant-table-content {
   overflow-y: scroll;
-  max-height: calc(100vh - 190px);
+  max-height: calc(100vh - 220px);
 }
-
 @media screen and (max-width: 640px) {
   /* .header {
     height: 60px;
@@ -316,6 +315,11 @@ export default {
     flex-direction: column;
     width: 98%;
     margin: 10px auto;
+  }
+
+  ::v-deep .ant-table-content {
+    overflow-y: scroll;
+    max-height: calc(100vh - 190px);
   }
 }
 </style>
