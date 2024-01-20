@@ -9,11 +9,20 @@
           ((allMintNum * 100) / totalSupply).toFixed(4)
         }}%）
       </div>
-      <div>
-        Telegram:
-        <a href="https://t.me/rams_in_ram" target="”_blank”"
-          >t.me/rams_in_ram</a
-        >
+      <div class="board-tg">
+        <div>Telegram：</div>
+        <div class="board-tg-item">
+          <div>
+            <a href="https://t.me/rambroclub" target="”_blank”"
+              >t.me/rambroclub</a
+            >
+          </div>
+          <div>
+            <a href="https://t.me/rams_in_ram" target="”_blank”"
+              >t.me/rams_in_ram</a
+            >
+          </div>
+        </div>
       </div>
     </div>
     <div class="content">
@@ -288,6 +297,11 @@ export default {
     rgba(0, 0, 0, 0.024) 0px 0px 5px, rgba(0, 0, 0, 0.05) 0px 1px 2px;
 }
 
+.board-tg {
+  display: flex;
+  align-items: center;
+}
+
 .tabBarExtraContent {
   margin-right: 10px;
 }
@@ -315,6 +329,20 @@ export default {
     flex-direction: column;
     width: 98%;
     margin: 10px auto;
+    padding: 0;
+  }
+
+  .board-tg {
+    display: flex;
+    /* align-items: center; */
+  }
+  .board-tg-item {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .board-tg-item > div {
+    margin: 0 10px;
   }
 
   ::v-deep .ant-table-content {
