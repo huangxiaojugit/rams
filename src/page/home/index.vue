@@ -264,7 +264,6 @@ export default {
 .container {
   min-height: 100vh;
   background: linear-gradient(135deg, #fff5d9, #fffdf8);
-  padding-bottom: 40px;
 }
 .header {
   height: 1px;
