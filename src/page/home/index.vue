@@ -106,7 +106,7 @@ const ramColumns = [
 ];
 
 const eos = EosApi({
-  httpEndpoint: "https://eos.greymass.com",
+  httpEndpoint: "https://api.eossupport.io",
   verbose: false,
   fetchConfiguration: {},
 });
@@ -183,7 +183,7 @@ export default {
     getRamsList(next_key = null) {
       this.isLoading = true;
       const eos = EosApi({
-        httpEndpoint: "https://eos.greymass.com",
+        httpEndpoint: "https://api.eossupport.io",
         verbose: false,
         fetchConfiguration: {},
       });
