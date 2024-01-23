@@ -1,7 +1,15 @@
 <template>
   <div class="container">
-    <!-- <Header /> -->
-    <div class="header"></div>
+    <div class="header">
+      <div class="header-content">
+        <div>
+          <img src="../../assets/logo.png" class="logo" />
+        </div>
+        <div>
+          <a href="https://about.eosram.info/" target="”_blank”">文档</a>
+        </div>
+      </div>
+    </div>
     <div class="board">
       <div>{{ $t("ramsaddress") }}:{{ dataList.length }}</div>
       <div>
@@ -266,8 +274,26 @@ export default {
   background: linear-gradient(135deg, #fff5d9, #fffdf8);
 }
 .header {
-  height: 1px;
+  height: 40px;
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 0.5px,
+    rgba(0, 0, 0, 0.024) 0px 0px 5px, rgba(0, 0, 0, 0.05) 0px 1px 2px;
 }
+
+.logo {
+  width: 30px;
+  cursor: pointer;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 80%;
+  margin: 0 auto;
+  height: 100%;
+}
+
 .content {
   max-width: 1200px;
   background-color: #fff;
@@ -314,21 +340,21 @@ export default {
 
 ::v-deep .ant-table-content {
   overflow-y: scroll;
-  max-height: calc(100vh - 220px);
+  max-height: calc(100vh - 220px - 40px);
 }
 @media screen and (max-width: 640px) {
   /* .header {
     height: 60px;
   } */
   .content {
-    width: 98%;
+    width: 96%;
   }
   .board {
     font-size: 12px;
     flex-direction: column;
-    width: 98%;
+    width: 96%;
     margin: 10px auto;
-    padding: 0;
+    padding: 5px 0;
   }
 
   .board-tg {
@@ -346,7 +372,11 @@ export default {
 
   ::v-deep .ant-table-content {
     overflow-y: scroll;
-    max-height: calc(100vh - 190px);
+    max-height: calc(100vh - 190px - 40px);
+  }
+
+  ::v-deep .header-content {
+    width: 96%;
   }
 }
 </style>
