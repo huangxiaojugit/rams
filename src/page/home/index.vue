@@ -11,7 +11,7 @@
       </div>
     </div>
     <div class="board">
-      <div>{{ $t("ramsaddress") }}:{{ dataList.length }}</div>
+      <div>{{ $t("ramsaddress") }}:{{ ramsCount }}</div>
       <div>
         {{ $t("ramsprogress") }}: {{ allMintNum + " / " + totalSupply }} （{{
           ((allMintNum * 100) / totalSupply).toFixed(4)
@@ -38,6 +38,7 @@
         <a-tab-pane key="rams" :tab="$t('ramsranking')">
           <a-table
             size="small"
+            key="username"
             :loading="isLoading"
             :columns="columns"
             :data-source="showTableList"
@@ -120,6 +121,7 @@ export default {
     return {
       isLoading: false,
       columns: columns,
+      ramsCount: "-",
       dataList: [],
       pagination: {
         defaultPageSize: 100,
@@ -180,52 +182,21 @@ export default {
       // }
       console.log("handleChangeTab", e);
     },
-    getRamsList(next_key = null) {
+    getRamsList() {
       this.isLoading = true;
-      const eos = EosApi({
-        httpEndpoint: "https://api.eossupport.io",
-        verbose: false,
-        fetchConfiguration: {},
-      });
-      eos
-        .getTableRows({
-          json: true,
-          code: "rams.eos",
-          scope: "rams.eos",
-          table: "users",
-          lower_bound: next_key,
-          upper_bound: null,
-          index_position: 1,
-          key_type: "",
-          limit: "1000",
-          reverse: false,
-          show_payer: true,
-        })
+      axios
+        .post("http://198.13.42.25:3001/api/ram/getRank")
         .then((res) => {
-          const { next_key } = res || {};
-          if (next_key) {
-            this.getRamsList(next_key);
-          }
-
-          let rowList = res.rows.map((v) => {
+          console.log("res", res);
+          const { data: { count = 0, data = [] } = {} } = res || {};
+          this.dataList = data.map((v, index) => {
             return {
-              username: v.payer,
-              mintcount: v.data.mintcount,
+              index: index + 1,
+              username: v.account,
+              mintcount: v.purchase_amount,
             };
           });
-          this.dataList.push(...rowList);
-
-          this.dataList = this.dataList
-            .sort((a, b) => b.mintcount - a.mintcount)
-            .map((v, index) => {
-              return {
-                ...v,
-                index: index + 1,
-              };
-            });
-        })
-        .catch((err) => {
-          console.log("err", err);
+          this.ramsCount = count;
         })
         .finally(() => {
           this.isLoading = false;
