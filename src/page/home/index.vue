@@ -185,7 +185,7 @@ export default {
     getRamsList() {
       this.isLoading = true;
       axios
-        .post("http://198.13.42.25:3001/api/ram/getRank")
+        .post("http://api.eosram.info:3001/api/ram/getRank")
         .then((res) => {
           console.log("res", res);
           const { data: { count = 0, data = [] } = {} } = res || {};
